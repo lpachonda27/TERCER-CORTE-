@@ -1,16 +1,20 @@
 const controller = {};
 
-controller.list = (req, res) => {
+controller.compras = (req, res) => {
   req.getConnection((err, conn) => {
     conn.query('SELECT * FROM users', (err, customers) => {
      if (err) {
       res.json(err);
      }
-     res.render('customers', {
+     res.render('lista', {
         data: customers
      });
     });
   });
+};
+
+controller.productos = (req, res) => {
+  res.render('customers')
 };
 
 controller.save = (req, res) => {
@@ -33,6 +37,10 @@ controller.edit = (req, res) => {
       })
     });
   });
+};
+
+controller.detalle = (req, res) => {
+  res.render('detalle')
 };
 
 controller.update = (req, res) => {
